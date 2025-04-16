@@ -27,3 +27,8 @@ export const registerSchema = yup.object().shape({
     .required("Confirmação ded senha é obrigatória")
     .oneOf([yup.ref("password")], "As senhas não coincidem"),
 });
+
+export const loginSchema = yup.object().shape({
+  email: yup.string().email("Email inválido").required("Email é obrigatório"),
+  password: yup.string().required("Senha é obrigatória"),
+});
