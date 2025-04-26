@@ -12,8 +12,16 @@ export interface LoginUserData {
 export interface AuthContextInterface {
   registerUser: (data: RegisterUserData) => void;
   loginUser: (data: LoginUserData) => void;
+  user: User | null;
+  isLoged: boolean;
 }
 
 export interface UserFormData extends RegisterUserData {
   comfirmPassword: string;
+}
+
+export interface User {
+  email: string;
+  id: number;
+  name: string;
 }
