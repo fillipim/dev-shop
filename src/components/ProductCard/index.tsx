@@ -1,8 +1,18 @@
+"use client";
+import { useCart } from "@/contexts/CartContext";
 import { Product } from "@/types/product";
 import { Box, Button, Card, Image, Text } from "@chakra-ui/react";
 import React from "react";
 
-const ProductCard: React.FC<Product> = ({ img_src, value, name }) => {
+const ProductCard: React.FC<Product> = ({
+  img_src,
+  value,
+  name,
+  category_id,
+  id,
+}) => {
+  const { addToCart } = useCart();
+
   return (
     <Card.Root overflow="hidden">
       <Box h="350px" bg="white">
@@ -18,7 +28,13 @@ const ProductCard: React.FC<Product> = ({ img_src, value, name }) => {
             style: "currency",
           })}
         </Text>
-        <Button variant="ghost" w="100%" bg="white" color="black">
+        <Button
+          variant="ghost"
+          w="100%"
+          bg="white"
+          color="black"
+          onClick={() => addToCart({ img_src, value, name, category_id, id })}
+        >
           Adicionar
         </Button>
       </Card.Footer>

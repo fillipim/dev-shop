@@ -71,7 +71,7 @@ export default function Home() {
       <Box w="60%" mt="2rem">
         <Heading mb="2rem">Produtos</Heading>
         <Grid gridTemplateColumns="repeat(4, 1fr)" gap={3}>
-          {products?.map((product, index) => (
+          {products?.map((product) => (
             <ProductCard key={product.name} {...product} />
           ))}
         </Grid>
