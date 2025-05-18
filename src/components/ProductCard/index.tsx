@@ -15,14 +15,20 @@ const ProductCard: React.FC<Product> = ({
 
   return (
     <Card.Root overflow="hidden">
-      <Box h="350px" bg="white">
-        <Image src={img_src} h="350px" alt={name} objectFit="contain" />
+      <Box h="200px" bg="white">
+        <Image
+          src={img_src}
+          h="200px"
+          w="full"
+          alt={name}
+          objectFit="contain"
+        />
       </Box>
       <Card.Body gap="2" py="2">
         <Card.Title>{name}</Card.Title>
       </Card.Body>
       <Card.Footer gap="2" flexDir="column" alignItems="start">
-        <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
+        <Text textStyle="xl" fontWeight="medium" letterSpacing="tight" mt="2">
           {value.toLocaleString("pt-BR", {
             currency: "BRL",
             style: "currency",

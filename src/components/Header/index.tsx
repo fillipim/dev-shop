@@ -9,6 +9,7 @@ import {
   HStack,
   Stack,
   Text,
+  Heading,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { ColorModeButton } from "../ui/color-mode";
@@ -26,9 +27,10 @@ const Header = () => {
       p="1rem"
       align="center"
     >
+      <Heading as="h1">Dev Shop</Heading>
       <Flex as="ul" gap="1rem" display={{ base: "none", sm: "flex" }}>
         <li>
-          <Link href="/">Categorias</Link>
+          <Link href="/categories/all">Categorias</Link>
         </li>
         <li>
           <Link href="/">Home</Link>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 "use client";
 import { getCategories, getProducts } from "@/services/products.service";
 import { Category } from "@/types/category";
@@ -41,6 +42,8 @@ export default function Home() {
 
   return (
     <Center flexDir="column">
+      <Image w="100%" h="500px" bg="gray.600" src="/banner.png" />
+
       <Heading pt="2rem">Bem vindo ao DevShop</Heading>
       <Group attached w="4xl" mt="2rem">
         <Input placeholder="Busque por..." />
@@ -48,7 +51,6 @@ export default function Home() {
           <IoIosSearch />
         </Button>
       </Group>
-      <Image w="60%" h="500px" bg="gray.600" mt="2rem" src="/banner.png" />
 
       <Box mt="3rem" w="60%">
         {/* <Heading mb="2rem">Categorias</Heading> */}
@@ -57,12 +59,21 @@ export default function Home() {
           {categories?.map((item, index) => (
             <ChakraLink
               as={Link}
-              href="/"
+              href={`/categories/${item.id}`}
               key={index}
               textAlign="center"
               flexDir="column"
             >
-              <Box w="150px" h="200px" bg="gray.300" borderRadius="md"></Box>
+              <Box w="150px" h="200px" overflow="hidden">
+                <Image
+                  src={item.img_src}
+                  w="150px"
+                  h="200px"
+                  transition="all .3s ease"
+                  borderRadius="md"
+                  _hover={{ transform: "scale(1.1)" }}
+                />
+              </Box>
               <Text>{item.category_name}</Text>
             </ChakraLink>
           ))}
