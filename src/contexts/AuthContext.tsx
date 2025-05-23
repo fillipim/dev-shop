@@ -36,8 +36,16 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           `Bearer ${JSON.parse(token)}`;
       }
       if (userId) {
-        const response = await getUser(Number(JSON.parse(userId)));
-        setUser(response);
+        try {
+          const response = await getUser(Number(JSON.parse(userId)));
+          setUser(response);
+        } catch (error: any) {
+          if (error.response.status === 401) {
+            toast.error("Sessão expirada, faça login novamente.");
+            setUser(null);
+            localStorage.clear();
+          }
+        }
       }
     };
 
